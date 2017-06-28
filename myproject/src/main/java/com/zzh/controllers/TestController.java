@@ -1,12 +1,7 @@
 package com.zzh.controllers;
 
-import com.zzh.entitys.UsersEntity;
-import com.zzh.mappers.UsersMapper;
 import io.swagger.annotations.Api;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * Created by house on 2017/6/28.
@@ -16,6 +11,11 @@ import java.util.List;
 @Api(tags = {"test"}, description = "test api")
 public class TestController {
 
+    // 四种参数传入
+    // 1.@RequestParam;
+    // 2.@PathVariable;
+    // 3.@RequestHeader;
+    // 4.@RequestBody; <- 必需为post
     @GetMapping("/RequestParam")
     public String RequestParam(@RequestParam(required = false) String str) {
         return str;

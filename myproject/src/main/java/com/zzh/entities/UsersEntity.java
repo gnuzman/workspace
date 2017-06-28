@@ -1,4 +1,4 @@
-package com.zzh.entitys;
+package com.zzh.entities;
 
 /**
  * Created by house on 2017/6/28.
