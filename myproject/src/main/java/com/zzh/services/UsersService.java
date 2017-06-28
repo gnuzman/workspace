@@ -1,5 +1,7 @@
 package com.zzh.services;
 
+import com.zzh.mappers.UsersMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -7,4 +9,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UsersService {
+    @Autowired
+    private UsersMapper usersMapper;
 }
