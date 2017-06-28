@@ -13,21 +13,8 @@ import java.util.List;
  */
 @RestController
 @CrossOrigin
-@Api(tags = {"users"}, description = "users api")
+@Api(tags = {"test"}, description = "test api")
 public class TestController {
-
-    @Autowired
-    UsersMapper usersMapper;
-
-    @GetMapping("/test1")
-    public List<UsersEntity> getTest1() {
-        return usersMapper.getUsers();
-    }
-
-    @GetMapping("/test2")
-    public List<UsersEntity> getTest2() {
-        return usersMapper.getUsers();
-    }
 
     @GetMapping("/RequestParam")
     public String RequestParam(@RequestParam(required = false) String str) {
@@ -48,6 +35,5 @@ public class TestController {
     public String RequestBody(@RequestBody String id) {
         return id;
     }
-
 
 }
