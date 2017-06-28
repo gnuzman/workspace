@@ -31,6 +31,10 @@ public class TestController {
         return params;
     }
 
+    // GET：无副作用，幂等，不可带 Request Body
+    // PUT：副作用，幂等，可以带 Request Body
+    // POST：副作用，非幂等，可以带 Request Body
+    // DELETE：副作用，幂等，不可带 Request Body
     @PostMapping("/RequestBody")
     public String RequestBody(@RequestBody String id) {
         return id;
