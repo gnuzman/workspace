@@ -29,18 +29,23 @@ public class TestController {
         return usersMapper.getUsers();
     }
 
-    @GetMapping("/params1")
-    public String params11(@RequestParam(required = false) String str) {
+    @GetMapping("/RequestParam")
+    public String RequestParam(@RequestParam(required = false) String str) {
         return str;
     }
 
-    @GetMapping("/params2/{id}")
-    public String params2(@PathVariable String id) {
+    @GetMapping("/PathVariable/{id}")
+    public String PathVariable(@PathVariable String id) {
         return id;
     }
 
-    @PostMapping("/params3")
-    public String params3(@RequestBody String id) {
+    @GetMapping("/RequestHeader")
+    public String RequestHeader(@RequestHeader(value = "params", required = false) String params) {
+        return params;
+    }
+
+    @PostMapping("/RequestBody")
+    public String RequestBody(@RequestBody String id) {
         return id;
     }
 
