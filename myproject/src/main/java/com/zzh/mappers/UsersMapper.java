@@ -12,6 +12,8 @@ import java.util.Map;
 @Mapper
 public interface UsersMapper {
     List<UsersEntity> getUsers(Map<String, Object> params);
+
     UsersEntity getUser(Integer id);
+
     Long addUser(UsersEntity usersEntity);
 }
