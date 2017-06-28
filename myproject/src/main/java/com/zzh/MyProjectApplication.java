@@ -10,3 +10,10 @@ public class MyProjectApplication {
 		SpringApplication.run(MyProjectApplication.class, args);
 	}
 }
+
+
+
+// git push -u origin master
+
+
+
