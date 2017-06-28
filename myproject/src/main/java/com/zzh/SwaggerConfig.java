@@ -14,6 +14,7 @@ import static com.google.common.collect.Sets.newHashSet;
  */
 
 // http://localhost:8080/swagger-ui.html
+// http://localhost:18080/zzh/swagger-ui.html
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
