@@ -18,4 +18,17 @@
         insert into users (name) values (#{name})
     </insert>
 
+    <select id="getUsersByList" resultType="com.zzh.entities.UsersEntity" parameterType="java.util.Map">
+        SELECT *
+        FROM users
+        WHERE 1 != 1
+        <if test="list.size() > 0">
+            or id in
+            <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+
+    </select>
+
 </mapper>

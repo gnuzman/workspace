@@ -16,4 +16,6 @@ public interface UsersMapper {
     UsersEntity getUser(Integer id);
 
     Long addUser(UsersEntity usersEntity);
+
+    List<UsersEntity> getUsersByList(Map<String, Object> params);
 }

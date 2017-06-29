@@ -44,4 +44,10 @@ public class UsersController {
         return usersEntity;
     }
 
+    @PostMapping("/getUsersByList")
+    public List<UsersEntity> getUsersByList(@RequestBody List<Integer> lst) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("list", lst);
+        return usersMapper.getUsersByList(params);
+    }
 }
