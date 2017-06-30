@@ -1,21 +1,18 @@
 尝试使用高频切换法
 #### 1.redis x
 * 完成最基本的操作。x
-* 5种数据结构的操作。
-
-
-
+* 5种数据结构的操作。z
 ####2.elasticsearch x
-    完成windows下的安装，运行。x
-    基本的添加查找功能能。
-添加插件
+* 完成windows下的安装，运行。x
+* 基本的添加查找功能能。z
+* 添加插件 z
 https://my.oschina.net/frylan/blog/639980
 ####3.aop x
-    aop的基本操作
-    aop切所有的controller操作
+* aop的基本操作 z
+* aop切所有的controller操作
 ####4.logback
 ####5.design pattern x
- 单例
+* 单例 z
 ####6.java
 ####7.netty
 ####8.kafka

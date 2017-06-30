@@ -10,7 +10,6 @@ public class Client {
     }
 
     public static void singletonTest() {
-        SingletonZ x = new SingletonZ();
 
     }
 }
