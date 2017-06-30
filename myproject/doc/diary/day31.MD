@@ -5,6 +5,7 @@
 ####2.elasticsearch x
 * 完成windows下的安装，运行。x
 * 基本的添加查找功能能。z
+https://www.mkyong.com/spring-boot/spring-boot-spring-data-elasticsearch-example/
 * 添加插件 z
 https://my.oschina.net/frylan/blog/639980
 ####3.aop x
@@ -12,7 +13,7 @@ https://my.oschina.net/frylan/blog/639980
 * aop切所有的controller操作
 ####4.logback
 ####5.design pattern x
-* 单例 z
+* 单例 z z
 ####6.java
 ####7.netty
 ####8.kafka
@@ -21,7 +22,7 @@ https://my.oschina.net/frylan/blog/639980
 spring boot 集成druid
 https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
 ####10.MD文件
-
+* MD用法学习 z z
 ```java
 
 ```
