@@ -1,8 +1,8 @@
 尝试使用高频切换法
-#### 1.redis x
+#### 1.redis
 * 完成最基本的操作。x
 * 5种数据结构的操作。z
-####2.elasticsearch x
+####2.elasticsearch
 * 完成windows下的安装，运行。x
 * 基本的添加查找功能能。z
 https://www.mkyong.com/spring-boot/spring-boot-spring-data-elasticsearch-example/
@@ -22,5 +22,5 @@ https://my.oschina.net/frylan/blog/639980
 ####9.druid连接池 x
 spring boot 集成druid
 https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
-####10.MD文件
-* MD用法学习 z z
+####10 spring cloud
+* eureka
