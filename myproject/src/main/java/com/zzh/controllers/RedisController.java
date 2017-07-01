@@ -1,5 +1,6 @@
 package com.zzh.controllers;
 
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 import redis.clients.jedis.Jedis;
 
@@ -10,6 +11,7 @@ import java.util.List;
  */
 @RestController
 @CrossOrigin
+@Api(tags = "redis", description = "redis api")
 public class RedisController {
 
     private Jedis jedis = new Jedis("localhost");
@@ -27,12 +29,20 @@ public class RedisController {
         jedis.close();
     }
 
-    @PostMapping("/redis/list")
-    public List<String> redis(@RequestBody List<Integer> lst) {
+    @PostMapping("/redis/list/{key}")
+    public List<String> add(
+            @PathVariable String key,
+            @RequestBody List<Integer> lst) {
 
         for (Integer data : lst) {
-            jedis.lpush("lst", data.toString());
+            jedis.rpush(key, data.toString());
         }
-        return jedis.lrange("lst", 0, -1);
+        return jedis.lrange(key, 0, -1);
+    }
+
+    @DeleteMapping("/redis/list/{key}")
+    public List<String> deleteList(@PathVariable String key) {
+        jedis.del(key);
+        return jedis.lrange(key, 0, -1);
     }
 }
