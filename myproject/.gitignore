@@ -16,6 +16,7 @@ target/
 *.iml
 *.ipr
 data
+doc/~$diary.xlsx
 
 ### NetBeans ###
 nbproject/private/
