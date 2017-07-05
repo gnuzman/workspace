@@ -1,6 +1,8 @@
 package com.zzh.controllers;
 
+import com.zzh.common.AES;
 import io.swagger.annotations.Api;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -11,14 +13,22 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = {"test"}, description = "test api")
 public class TestController {
 
+    @Value("${xx.yy.key}")
+    private String key;
     // 四种参数传入
     // 1.@RequestParam;
     // 2.@PathVariable;
     // 3.@RequestHeader;
     // 4.@RequestBody; <- 必需为post
     @GetMapping("/RequestParam")
-    public String RequestParam(@RequestParam(required = false) String str) {
-        return str;
+    public String RequestParam(@RequestParam(required = false) String str) throws Exception {
+
+        String encoder = AES.aesEncode("nice");
+        System.out.println(encoder);
+        String decoder = AES.aesDecode(encoder);
+        System.out.println(decoder);
+
+        return str + key;
     }
 
     @GetMapping("/PathVariable/{id}")

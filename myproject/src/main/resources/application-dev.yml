@@ -41,3 +41,7 @@ server:
   port: 18080
   context-path: /zzh
 
+com:
+  zzh:
+    key: 52125ad5baf8b04567702ac9842479fa
+
