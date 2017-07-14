@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = {"test"}, description = "test api")
 public class TestController {
 
-    @Value("${xx.yy.key}")
+    @Value("${com.zzh.key}")
     private String key;
     // 四种参数传入
     // 1.@RequestParam;
