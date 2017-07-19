@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @CrossOrigin
 public class ZabbixController {
     private RestTemplate restTemplate;
+
     @GetMapping("/zabbix-login")
     public String login() {
 //        HttpEntity<String> entity = new HttpEntity<String>("", "");
