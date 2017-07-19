@@ -13,6 +13,8 @@ import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by house on 2017/6/28.
@@ -124,9 +126,32 @@ public class TestController {
         Gson gson = new Gson();
         String strData = gson.toJson(lstData);
 
-        List<Map<String, String>> retList = gson.fromJson(strData, new TypeToken<List<Map<String, String>>>() {}.getType());
+        List<Map<String, String>> retList = gson.fromJson(strData, new TypeToken<List<Map<String, String>>>() {
+        }.getType());
 
         return "";
+    }
+
+    // stream用法
+    @GetMapping("test/stream")
+    public void testStream() throws Exception {
+        List<Map<String, String>> lstData = new ArrayList<>();
+        Map<String, String> mapData1 = new HashMap<>();
+        mapData1.put("username", "lmh");
+        mapData1.put("passwd", "123");
+        lstData.add(mapData1);
+        mapData1.clear();
+        mapData1.put("username", "zzh");
+        mapData1.put("passwd", "234");
+        lstData.add(mapData1);
+
+        List<Map<String, String>> xxx = lstData.stream().filter(obj -> obj.get("username") == "zzh")
+                .collect(Collectors.toList());
+
+        String strPasswd = xxx.get(0).get("passwd");
+
+
+        int i = 0;
     }
 
 }
