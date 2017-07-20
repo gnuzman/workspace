@@ -13,8 +13,11 @@ import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.CountDownLatch;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+
 
 /**
  * Created by house on 2017/6/28.
@@ -152,6 +155,33 @@ public class TestController {
 
 
         int i = 0;
+    }
+
+    // 线程用法
+    @GetMapping("test/thread")
+    public void testThread() throws Exception {
+        long start = System.currentTimeMillis();
+
+        // 创建一个初始值为5的倒数计数器
+        CountDownLatch countDownLatch = new CountDownLatch(5);
+        for(int i = 0; i < 5; i++)
+        {
+            Thread thread = new TestThread(countDownLatch, i, "str");
+            thread.start();
+        }
+
+        try
+        {
+            // 阻塞当前线程，直到倒数计数器倒数到0
+            countDownLatch.await();
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+
+        long end = System.currentTimeMillis();
+        System.out.println("子线程执行时长：" + (end - start));
     }
 
 }
