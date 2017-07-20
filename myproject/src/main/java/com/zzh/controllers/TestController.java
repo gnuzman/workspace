@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -182,6 +182,34 @@ public class TestController {
 
         long end = System.currentTimeMillis();
         System.out.println("子线程执行时长：" + (end - start));
+    }
+
+    // 线程用法，带返回值
+    @GetMapping("test/thread-return")
+    public String testThreadReturn() throws Exception {
+        ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
+        List<Future> futureList = new ArrayList<Future>();
+
+        for (Integer i = 0; i < 10; ++i) {
+            CallableThread callableThread = new CallableThread(i.toString());
+            Future<String> future = cachedThreadPool.submit(callableThread);
+            futureList.add(future);
+        }
+
+        cachedThreadPool.shutdown();
+        while (!cachedThreadPool.awaitTermination(1, TimeUnit.SECONDS));
+
+        try {
+            for (Future future : futureList) {
+                System.out.println(future.get().toString());
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
 }
