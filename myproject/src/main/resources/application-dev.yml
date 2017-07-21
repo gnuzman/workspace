@@ -37,16 +37,25 @@ logging:
     com.zzh.mappers: debug
     com.ibatis.sqlmaps: debug
 
+#server
 server:
   port: 18080
   context-path: /zzh
 
+#AES key
 com:
   zzh:
     key: 52125ad5baf8b04567702ac9842479fa
 
+#zabbix
 zabbix:
   server:
     url: http://192.168.42.144
     user: Admin
     passwd: zabbix
+
+# security
+security:
+  user:
+    name: admin
+    password: admin
