@@ -13,10 +13,11 @@ import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.concurrent.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 
 
 /**
@@ -164,19 +165,15 @@ public class TestController {
 
         // 创建一个初始值为5的倒数计数器
         CountDownLatch countDownLatch = new CountDownLatch(5);
-        for(int i = 0; i < 5; i++)
-        {
+        for (int i = 0; i < 5; i++) {
             Thread thread = new TestThread(countDownLatch, i, "str");
             thread.start();
         }
 
-        try
-        {
+        try {
             // 阻塞当前线程，直到倒数计数器倒数到0
             countDownLatch.await();
-        }
-        catch (InterruptedException e)
-        {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
@@ -196,20 +193,52 @@ public class TestController {
             futureList.add(future);
         }
 
-        cachedThreadPool.shutdown();
-        while (!cachedThreadPool.awaitTermination(1, TimeUnit.SECONDS));
+//        cachedThreadPool.shutdown();
+//        while (!cachedThreadPool.awaitTermination(1, TimeUnit.SECONDS));
+//
+//        try {
+//            for (Future future : futureList) {
+//                Gson gson = new Gson();
+//                Map<String, Object> mapObj = gson.fromJson(future.get().toString(), new TypeToken<Map<String, String>>() {
+//                }.getType());
+//
+//                System.out.println(future.get().toString());
+//            }
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
-        try {
-            for (Future future : futureList) {
-                System.out.println(future.get().toString());
+        return "end";
+    }
+
+    @GetMapping("test/returnArray")
+    public List<String> testReturnArray(@RequestParam(value = "testList") List<String> lstParam) {
+
+        List<String> lst = new ArrayList<>();
+        lst.add("111");
+        lst.add("abc");
+
+        return lst;
+    }
+
+    @GetMapping("test/threadBase")
+    public String testThreadBase() {
+
+        new Thread() {
+            public void run() {
+                try {
+                    Thread.sleep(5000);
+                    System.out.println("wait 5000");
+                }
+                catch (Exception e) {
+
+                }
+
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return "";
+        }.start();
+        return "end";
     }
 
 }
