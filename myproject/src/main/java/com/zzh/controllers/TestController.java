@@ -5,7 +5,9 @@ import com.google.gson.reflect.TypeToken;
 import com.zzh.common.AES;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.client.support.BasicAuthorizationInterceptor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -85,6 +87,22 @@ public class TestController {
             //使用这个构造函数时，如果存在kuka.txt文件，
             //则直接往kuka.txt中追加字符串
             FileWriter writer = new FileWriter(fileName, true);
+            SimpleDateFormat format = new SimpleDateFormat();
+            String time = format.format(new Date());
+            writer.write("\n\t" + time);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @GetMapping("test/write-file-new")
+    public void writeFileNew() {
+        String fileName = "d:\\kuka.txt";
+        try {
+            //使用这个构造函数时，如果存在kuka.txt文件，
+            //则直接往kuka.txt中追加字符串
+            FileWriter writer = new FileWriter(fileName);
             SimpleDateFormat format = new SimpleDateFormat();
             String time = format.format(new Date());
             writer.write("\n\t" + time);
@@ -231,14 +249,41 @@ public class TestController {
                 try {
                     Thread.sleep(5000);
                     System.out.println("wait 5000");
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
 
                 }
 
             }
         }.start();
         return "end";
+    }
+
+    public enum STATUS {
+        AAA(-1), BBB(2), CCC(3);
+        private Integer value = 0;
+
+        STATUS(Integer value) {
+            this.value = value;
+        }
+
+        public int value() {
+            return this.value;
+        }
+    }
+
+    @GetMapping("test/enum")
+    public Integer testEnum() {
+
+        return STATUS.AAA.value();
+
+    }
+
+    @GetMapping("test/resttemplate")
+    public void testRestTemplate() {
+        RestTemplate restTemplate = new RestTemplate();
+        // 填写登录用户名密码
+        restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor("username", "passwd"));
+
     }
 
 }
