@@ -294,7 +294,7 @@ public class TestController {
 //
 //
 //	//参数使用MAP传递
-//	Map<String ,Object> urlVariables = new HashMap<String ,Object>();
+//	Map<String ,Object> urlVariables = new HashMap<String ,Object>();-
 //	urlVariables.put("name", "zhaoshijie");
 //	urlVariables.put("id", 80);
 //	String message2 = restTemplate.getForObject("http://localhost:8080/yongbarservice/appstore/appgoods/restTemplate", String.class, urlVariables);
