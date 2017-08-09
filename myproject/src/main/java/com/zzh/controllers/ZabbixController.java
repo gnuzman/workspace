@@ -2,6 +2,7 @@ package com.zzh.controllers;
 
 import com.zzh.entities.MetricDataEntity;
 import com.zzh.services.MetricDataService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +19,14 @@ import java.util.Map;
  */
 @RestController
 @CrossOrigin
+@Api(tags = "zabbix-agent")
 public class ZabbixController {
     @Autowired
     private MetricDataService metricDataService;
 
     @GetMapping("/zabbix/metric")
     public Map<String, Object> zabbix(
-            @RequestParam(value = "agentAddress", defaultValue = "192.168.42.254") String agentAddress,
+            @RequestParam(value = "agentAddress", defaultValue = "192.168.1.110") String agentAddress,
             @RequestParam(value = "port", defaultValue = "10050") String agentPort,
             @RequestParam(value = "metrics", defaultValue = "proc.num[]|system.cpu.intr|agent.ping|proc.num[,,run]") String metrics) throws Exception {
         InetAddress address = InetAddress.getByName(agentAddress);

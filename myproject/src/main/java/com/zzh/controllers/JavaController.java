@@ -1,9 +1,7 @@
 package com.zzh.controllers;
 
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,5 +27,12 @@ public class JavaController {
         } else {
             return test.get("d").toString();
         }
+    }
+
+    @PostMapping("java/params")
+    public String testParams(@RequestParam(value = "param1") String param1,
+                             @RequestParam(value = "param2") String param2,
+                             @RequestParam(value = "param3") String param3) {
+        return "";
     }
 }
